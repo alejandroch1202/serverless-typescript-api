@@ -1,0 +1,19 @@
+service: serverless-typescript-api
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-typescript
+
+functions:
+  listProducts:
+    handler: src/functions/products/listProducts.handler
+    events:
+      - http:
+          path: products
+          method: get
+          cors: true
